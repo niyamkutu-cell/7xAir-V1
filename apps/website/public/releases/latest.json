@@ -1,0 +1,20 @@
+{
+  "stable": {
+    "version": "0.1.0",
+    "channel": "stable",
+    "publishedAt": "2026-11-20T00:00:00Z",
+    "releaseNotes": "Initial 7xAir Windows 10/11 Launcher release with translucent glass UI, 7 color themes, independent instances, Modrinth integration, Performance Center, verified updates, and automatic managed Fabric client.",
+    "windowsInstallerUrl": "https://7xair.vercel.app/downloads/7xAir-Setup-0.1.0.exe",
+    "windowsInstallerSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "windowsInstallerSize": 0
+  },
+  "beta": {
+    "version": "0.1.0",
+    "channel": "beta",
+    "publishedAt": "2026-11-20T00:00:00Z",
+    "releaseNotes": "Beta channel mirrors stable 0.1.0.",
+    "windowsInstallerUrl": "https://7xair.vercel.app/downloads/7xAir-Setup-0.1.0.exe",
+    "windowsInstallerSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "windowsInstallerSize": 0
+  }
+}

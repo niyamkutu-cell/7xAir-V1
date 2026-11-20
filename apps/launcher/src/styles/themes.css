@@ -1,0 +1,100 @@
+/* Seven anime-inspired nature themes for 7xAir */
+
+:root,
+:root[data-theme="azure-mountains"] {
+  --accent: #56ccf2;
+  --accent-rgb: 86, 204, 242;
+  --accent-secondary: #2f80ed;
+  --accent-secondary-rgb: 47, 128, 237;
+  --bg-base: #071324;
+  --bg-glow-1: rgba(86, 204, 242, 0.16);
+  --bg-glow-2: rgba(47, 128, 237, 0.18);
+  --glass-tint-rgb: 10, 22, 42;
+  --text-primary: #f1f7fd;
+  --text-secondary: #a8c1db;
+  --text-muted: #708ca9;
+}
+
+:root[data-theme="sakura-valley"] {
+  --accent: #f9a8d4;
+  --accent-rgb: 249, 168, 212;
+  --accent-secondary: #ec4899;
+  --accent-secondary-rgb: 236, 72, 153;
+  --bg-base: #1a0d18;
+  --bg-glow-1: rgba(249, 168, 212, 0.18);
+  --bg-glow-2: rgba(236, 72, 153, 0.16);
+  --glass-tint-rgb: 34, 16, 30;
+  --text-primary: #fff4f9;
+  --text-secondary: #dbb3c9;
+  --text-muted: #9e758c;
+}
+
+:root[data-theme="emerald-wilderness"] {
+  --accent: #4ade80;
+  --accent-rgb: 74, 222, 128;
+  --accent-secondary: #059669;
+  --accent-secondary-rgb: 5, 150, 105;
+  --bg-base: #071610;
+  --bg-glow-1: rgba(74, 222, 128, 0.16);
+  --bg-glow-2: rgba(5, 150, 105, 0.18);
+  --glass-tint-rgb: 9, 26, 20;
+  --text-primary: #eefdf3;
+  --text-secondary: #a4cbb4;
+  --text-muted: #6c967e;
+}
+
+:root[data-theme="frozen-peaks"] {
+  --accent: #bae6fd;
+  --accent-rgb: 186, 230, 253;
+  --accent-secondary: #60a5fa;
+  --accent-secondary-rgb: 96, 165, 250;
+  --bg-base: #091522;
+  --bg-glow-1: rgba(186, 230, 253, 0.16);
+  --bg-glow-2: rgba(96, 165, 250, 0.16);
+  --glass-tint-rgb: 14, 24, 38;
+  --text-primary: #f5fafe;
+  --text-secondary: #b4cce2;
+  --text-muted: #7893ad;
+}
+
+:root[data-theme="sunset-horizon"] {
+  --accent: #fb923c;
+  --accent-rgb: 251, 146, 60;
+  --accent-secondary: #f59e0b;
+  --accent-secondary-rgb: 245, 158, 11;
+  --bg-base: #190e09;
+  --bg-glow-1: rgba(251, 146, 60, 0.18);
+  --bg-glow-2: rgba(245, 158, 11, 0.16);
+  --glass-tint-rgb: 34, 18, 12;
+  --text-primary: #fff8f1;
+  --text-secondary: #dec0a6;
+  --text-muted: #a18268;
+}
+
+:root[data-theme="midnight-forest"] {
+  --accent: #818cf8;
+  --accent-rgb: 129, 140, 248;
+  --accent-secondary: #3b82f6;
+  --accent-secondary-rgb: 59, 130, 246;
+  --bg-base: #050916;
+  --bg-glow-1: rgba(129, 140, 248, 0.17);
+  --bg-glow-2: rgba(59, 130, 246, 0.15);
+  --glass-tint-rgb: 8, 14, 30;
+  --text-primary: #f1f4ff;
+  --text-secondary: #a4b2d8;
+  --text-muted: #6c7ba3;
+}
+
+:root[data-theme="dreamy-anime"] {
+  --accent: #c4b5fd;
+  --accent-rgb: 196, 181, 253;
+  --accent-secondary: #f472b6;
+  --accent-secondary-rgb: 244, 114, 182;
+  --bg-base: #140f24;
+  --bg-glow-1: rgba(196, 181, 253, 0.18);
+  --bg-glow-2: rgba(244, 114, 182, 0.16);
+  --glass-tint-rgb: 24, 18, 42;
+  --text-primary: #f9f5ff;
+  --text-secondary: #cbbde8;
+  --text-muted: #9080b3;
+}

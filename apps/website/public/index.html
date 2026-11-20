@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-theme="azure-mountains">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7xAir — Windows 10/11 Minecraft Launcher & Translucent Glass Fabric Client</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="navbar glass-surface">
+      <div class="nav-inner">
+        <a href="#top" class="brand">
+          <img src="/logo-7x.png" alt="7X" style="width: 28px; height: 28px; object-fit: contain;" />
+          <span>7xAir</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#download">Download</a>
+          <a href="#versions">Versions</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#changelog">Changelog</a>
+        </nav>
+        <div class="nav-actions">
+          <select id="theme-switcher" class="glass-select" aria-label="Color theme">
+            <option value="azure-mountains">Azure Mountains</option>
+            <option value="emerald-wilderness">Emerald Wilderness</option>
+            <option value="midnight-forest">Midnight Forest</option>
+            <option value="dreamy-anime">Dreamy Anime</option>
+            <option value="sunset-horizon">Sunset Horizon</option>
+            <option value="frozen-peaks">Frozen Peaks</option>
+            <option value="sakura-valley">Sakura Valley</option>
+          </select>
+          <button id="auth-open-btn" type="button" class="btn-glass">Log In / Sign Up</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero glass-surface">
+        <span class="pill">Windows 10/11 · Tauri 2 · Automatic Managed Fabric Client</span>
+        <h1>Floating Glass Precision for Minecraft.</h1>
+        <p class="lead">
+          7xAir pairs a native Windows 10/11 launcher with an automatically managed Fabric client
+          built around genuinely translucent floating glass HUD panels, Modrinth integration,
+          independent instances, and a live Performance Center.
+        </p>
+        <div class="hero-cta">
+          <a id="hero-download-link" href="#download" class="btn-primary">
+            Download Windows Installer (.exe)
+          </a>
+          <a href="#showcase" class="btn-glass">Explore Showcase</a>
+        </div>
+        <p class="subnote">
+          The 7xAir Fabric Client installs and updates automatically per instance inside the
+          launcher (with a global ON/OFF toggle and per-instance overrides). No separate client
+          archive download is distributed.
+        </p>
+      </section>
+
+      <section id="download" class="section">
+        <h2>Windows 10/11 Download</h2>
+        <div class="glass-surface card-pad download-grid">
+          <div>
+            <span class="pill" id="dl-version-pill">v0.1.0 · Stable</span>
+            <h3 id="dl-filename" style="margin: 12px 0 6px;">7xAir-Setup-0.1.0.exe</h3>
+            <p id="dl-requirements" class="muted"></p>
+            <p id="dl-policy-note" class="policy-callout"></p>
+          </div>
+          <div class="download-actions">
+            <a id="windows-exe-btn" class="btn-primary" href="/downloads/7xAir-Setup-0.1.0.exe">
+              Download Windows EXE Installer
+            </a>
+            <div class="mono-box" id="dl-sha256">SHA-256: loading...</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="versions" class="section">
+        <h2>Version Information & Compatibility</h2>
+        <div id="versions-grid" class="two-col"></div>
+      </section>
+
+      <section id="showcase" class="section">
+        <div class="section-head">
+          <div>
+            <h2>Showcase Gallery</h2>
+            <p class="muted">Community and feature captures using 7xAir's seven glass themes.</p>
+          </div>
+          <button id="toggle-upload-btn" type="button" class="btn-glass">Upload Screenshot</button>
+        </div>
+
+        <form id="upload-form" class="glass-surface card-pad upload-form hidden">
+          <h3>Submit a Showcase Screenshot</h3>
+          <p class="muted" id="upload-auth-hint">Sign in to upload PNG, JPG, or WebP screenshots (max 2 MB).</p>
+          <div class="form-grid">
+            <input id="shot-title" class="glass-input" type="text" placeholder="Screenshot title" required />
+            <select id="shot-version" class="glass-select">
+              <option value="1.21.11">Minecraft 1.21.11</option>
+              <option value="26.2">Minecraft 26.2</option>
+            </select>
+            <select id="shot-theme" class="glass-select">
+              <option value="azure-mountains">Azure Mountains</option>
+              <option value="emerald-wilderness">Emerald Wilderness</option>
+              <option value="midnight-forest">Midnight Forest</option>
+              <option value="dreamy-anime">Dreamy Anime</option>
+              <option value="sunset-horizon">Sunset Horizon</option>
+              <option value="frozen-peaks">Frozen Peaks</option>
+              <option value="sakura-valley">Sakura Valley</option>
+            </select>
+            <input id="shot-file" class="glass-input" type="file" accept="image/png,image/jpeg,image/webp" required />
+          </div>
+          <input id="shot-caption" class="glass-input" type="text" placeholder="Short caption (optional)" />
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button type="submit" class="btn-primary">Publish Screenshot</button>
+            <span id="upload-status" class="muted"></span>
+          </div>
+        </form>
+
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </section>
+
+      <section id="changelog" class="section">
+        <h2>Changelog</h2>
+        <div id="changelog-list" class="stack"></div>
+      </section>
+    </main>
+
+    <div id="auth-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Account sign in">
+      <div class="glass-surface modal-card">
+        <div class="section-head">
+          <h3 id="auth-modal-title">Log In to 7xAir</h3>
+          <button id="auth-close-btn" type="button" class="btn-glass">Close</button>
+        </div>
+
+        <div class="tab-row">
+          <button id="tab-login" type="button" class="btn-glass active-tab">Log In</button>
+          <button id="tab-signup" type="button" class="btn-glass">Sign Up</button>
+        </div>
+
+        <form id="auth-form" class="stack">
+          <input id="auth-username" class="glass-input hidden" type="text" placeholder="Username (3–20 chars)" />
+          <input id="auth-email" class="glass-input" type="email" placeholder="Email address" required />
+          <input id="auth-password" class="glass-input" type="password" placeholder="Password (8+ chars)" required />
+          <button type="submit" class="btn-primary" id="auth-submit-btn">Log In</button>
+          <div id="auth-feedback" class="muted"></div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer container">
+      <span>© 2026 7xAir · Windows 10/11 Launcher & Managed Fabric Client</span>
+      <span>Hosted on Vercel · Automatic SHA-256 Verified Updates</span>
+    </footer>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
