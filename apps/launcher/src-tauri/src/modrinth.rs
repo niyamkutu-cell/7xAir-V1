@@ -1254,12 +1254,6 @@ pub struct ModpackUpdateInfo {
     pub conflicts: Vec<ModpackFileConflict>,
 }
 
-fn sha512_hex(bytes: &[u8]) -> String {
-    let mut hasher = Sha512::new();
-    hasher.update(bytes);
-    format!("{:x}", hasher.finalize())
-}
-
 fn modpack_tracking_path(instance_dir: &Path) -> PathBuf {
     instance_dir.join("modpack-manifest.json")
 }
