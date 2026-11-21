@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" data-theme="midnight-sky">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7xAir — Windows Minecraft Launcher & Translucent Glass Client</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="ambient-orb ambient-orb--1"></div>
+      <div class="ambient-orb ambient-orb--2"></div>
+    </div>
+
+    <header class="navbar glass-surface">
+      <div class="nav-inner">
+        <a href="#home" class="brand" data-page="home">
+          <img src="/logo-7x.png" alt="7X" class="brand-logo" />
+          <span>7xAir</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="#home" class="nav-link active" data-page="home">Home</a>
+          <a href="#features" class="nav-link" data-page="features">Features</a>
+          <a href="#performance" class="nav-link" data-page="performance">Performance Center</a>
+          <a href="#client" class="nav-link" data-page="client">Client</a>
+          <a href="#screenshots" class="nav-link" data-page="screenshots">Screenshots</a>
+          <a href="#updates" class="nav-link" data-page="updates">Updates</a>
+          <a href="#downloads" class="nav-link" data-page="downloads">Downloads</a>
+          <a href="#account" class="nav-link" data-page="account">Account</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button id="nav-auth-btn" type="button" class="btn-glass btn-sm">Sign In</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- 1. HOME PAGE -->
+      <section id="page-home" class="page-view active">
+        <div class="hero glass-surface">
+          <span class="pill">Windows 10/11 · Minecraft 1.21.11 & 26.2 · Fabric Ready</span>
+          <h1>Precision Gaming. Liquid Glass.</h1>
+          <p class="lead">
+            7xAir combines a fast Windows Minecraft launcher, isolated instance mod management,
+            Modrinth integration, a live Performance Center, and an automatically synced translucent
+            glass Fabric client.
+          </p>
+          <div class="hero-cta">
+            <a href="#downloads" class="btn-primary" data-page="downloads">
+              Download Windows Setup (.exe)
+            </a>
+            <a href="#features" class="btn-glass" data-page="features">Explore Features</a>
+          </div>
+          <p class="subnote">
+            Sign in to your 7xAir website account to unlock the verified Windows installer. The
+            in-game Fabric client installs automatically per instance — no separate client JAR required.
+          </p>
+        </div>
+
+        <div class="three-col" style="margin-top: 20px;">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Isolated Instances</span>
+            <h3>Per-Instance Mods</h3>
+            <p class="muted">
+              Every Minecraft 1.21.11 and 26.2 instance keeps its own mods, configs, and one-click ON/OFF toggles.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Performance</span>
+            <h3>Hardware-Aware Tuning</h3>
+            <p class="muted">
+              Real-time CPU/RAM telemetry, four reversible G1GC profiles, and a read-only Crash Analyzer.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Liquid Glass</span>
+            <h3>Translucent In-Game HUD</h3>
+            <p class="muted">
+              Right-Shift ClickGUI, drag-and-drop HUD Editor, and 9 synchronized launcher-to-game themes.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. FEATURES PAGE -->
+      <section id="page-features" class="page-view">
+        <div class="page-head">
+          <h2>Built for Competitive & Modded Play</h2>
+          <p class="muted">Every module is engineered for speed, isolation, and zero clutter.</p>
+        </div>
+        <div class="features-grid">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Telemetry</span>
+            <h3>Performance Center</h3>
+            <p class="muted">Live CPU, RAM, GPU, disk, and Minecraft process monitoring.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Tuning</span>
+            <h3>FPS Optimization</h3>
+            <p class="muted">Safe, reversible G1GC heap flags and recommended Fabric FPS mods.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Diagnostics</span>
+            <h3>Crash Analyzer</h3>
+            <p class="muted">Read-only log scanner that flags mod conflicts, missing deps, and Java errors.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Isolation</span>
+            <h3>Multiple Instances</h3>
+            <p class="muted">Independent directories, cloning, custom RAM/Java overrides, and Open Folder.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Catalog</span>
+            <h3>Modrinth Integration</h3>
+            <p class="muted">Search popular & updated mods with dependency resolution and SHA-512 checks.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Control</span>
+            <h3>Instance Mods Manager</h3>
+            <p class="muted">Enable or disable mods safely with .disabled files, search, sort, and updates.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Auto-Sync</span>
+            <h3>Automatic Client Mod</h3>
+            <p class="muted">Per-instance 7xAir Fabric client installation with global ON/OFF and overrides.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Aesthetics</span>
+            <h3>Multiple Themes</h3>
+            <p class="muted">Obsidian Violet, Black & Sky Blue, plus 7 nature themes.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">HUD</span>
+            <h3>Customizable In-Game HUD</h3>
+            <p class="muted">Move, resize, recolor, toggle shadows, and tune glass transparency live.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Targets</span>
+            <h3>Minecraft Version Support</h3>
+            <p class="muted">Focused Fabric support for Minecraft 1.21.11 and 26.2 with Java 21+ detection.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. PERFORMANCE CENTER PAGE -->
+      <section id="page-performance" class="page-view">
+        <div class="page-head">
+          <h2>7xAir Performance Center</h2>
+          <p class="muted">Reversible optimization profiles and real-time diagnostics — never fake FPS claims.</p>
+        </div>
+        <div class="two-col">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">4 Reversible Profiles</span>
+            <h3>Balanced · Maximum FPS · Low Resource · PvP</h3>
+            <p class="muted">
+              Automatically calculates safe RAM heap allocations from your system memory and applies
+              low-latency G1GC flags globally or per instance.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Read-Only Analysis</span>
+            <h3>Crash Analyzer & Background Pause</h3>
+            <p class="muted">
+              Scans crash reports and latest.log without modifying your files, and pauses launcher
+              animations and 3D WebGL rendering while Minecraft runs.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. CLIENT PAGE -->
+      <section id="page-client" class="page-view">
+        <div class="page-head">
+          <h2>7xAir Translucent Glass Fabric Client</h2>
+          <p class="muted">Installed automatically per instance inside the launcher — never distributed as a separate JAR.</p>
+        </div>
+        <div class="two-col">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Right Shift</span>
+            <h3>Categorized In-Game ClickGUI</h3>
+            <p class="muted">
+              Search modules, switch between Performance, Combat, and Utility categories, adjust
+              glass transparency, and rebind keys directly in Minecraft Controls.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">H Key</span>
+            <h3>Live Drag-and-Drop HUD Editor</h3>
+            <p class="muted">
+              Position FPS, CPS, Ping, Coordinates, Toggle Sprint, Keystrokes, Armor, and Potions
+              with snap-to-grid, scroll scaling, custom colors, and shadow toggles.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. SCREENSHOTS PAGE -->
+      <section id="page-screenshots" class="page-view">
+        <div class="page-head">
+          <h2>Community Screenshots</h2>
+          <p class="muted">Share your 7xAir launcher themes and in-game glass HUD setups.</p>
+        </div>
+
+        <div class="glass-surface card-pad" style="margin-bottom: 18px;">
+          <p id="upload-auth-hint" class="muted" style="margin-top: 0;">
+            Sign in on the Account page to upload PNG, JPG, or WebP screenshots (max 2 MB).
+          </p>
+          <form id="screenshot-form" class="form-grid">
+            <input id="shot-title" class="glass-input" type="text" placeholder="Screenshot title" required />
+            <input id="shot-caption" class="glass-input" type="text" placeholder="Short caption (optional)" />
+            <select id="shot-version" class="glass-select" aria-label="Minecraft version">
+              <option value="1.21.11">Minecraft 1.21.11</option>
+              <option value="26.2">Minecraft 26.2</option>
+            </select>
+            <input id="shot-file" class="glass-input" type="file" accept="image/png,image/jpeg,image/webp" required />
+            <button type="submit" class="btn-primary">Upload Screenshot</button>
+          </form>
+          <div id="shot-feedback" class="feedback"></div>
+        </div>
+
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </section>
+
+      <!-- 6. UPDATES PAGE -->
+      <section id="page-updates" class="page-view">
+        <div class="page-head">
+          <h2>Updates & Version Compatibility</h2>
+          <p class="muted">Track verified 7xAir releases and supported Minecraft Fabric targets.</p>
+        </div>
+        <div id="versions-grid" class="two-col" style="margin-bottom: 18px;"></div>
+        <div id="changelog-list" class="changelog-list"></div>
+      </section>
+
+      <!-- 7. DOWNLOADS PAGE (SERVER-PROTECTED) -->
+      <section id="page-downloads" class="page-view">
+        <div class="page-head">
+          <h2>Download 7xAir for Windows</h2>
+          <p class="muted">Verified Windows 10/11 NSIS installer (.exe) with SHA-256 integrity.</p>
+        </div>
+
+        <div class="glass-surface card-pad download-grid">
+          <div>
+            <span class="pill" id="dl-version-pill">v0.1.0 · Stable</span>
+            <h3 id="dl-filename" style="margin: 12px 0 6px;">7xAir-Setup-0.1.0.exe</h3>
+            <p id="dl-requirements" class="muted"></p>
+            <p id="dl-policy-note" class="policy-callout"></p>
+            <div class="mono-box" id="dl-sha256" style="margin-top: 10px;">SHA-256: loading...</div>
+          </div>
+
+          <div class="download-actions">
+            <div id="dl-auth-status" class="muted" style="font-size: 13px;">
+              Checking account authorization...
+            </div>
+            <button id="windows-exe-btn" type="button" class="btn-primary">
+              Sign In to Download Windows EXE
+            </button>
+            <div id="dl-feedback" class="feedback"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. ACCOUNT PAGE -->
+      <section id="page-account" class="page-view">
+        <div class="page-head">
+          <h2>7xAir Website Account</h2>
+          <p class="muted">
+            Required to download the Windows installer and upload screenshots. Independent from your
+            Microsoft Minecraft login inside the desktop launcher.
+          </p>
+        </div>
+
+        <div id="account-signed-in" class="glass-surface card-pad hidden">
+          <span class="pill">Authenticated Session</span>
+          <h3 id="account-username" style="margin: 12px 0 6px;"></h3>
+          <p id="account-email" class="muted"></p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
+            <a href="#downloads" class="btn-primary" data-page="downloads">Go to Downloads</a>
+            <button id="account-signout-btn" type="button" class="btn-glass">Sign Out</button>
+          </div>
+        </div>
+
+        <div id="account-auth-box" class="glass-surface card-pad" style="max-width: 460px;">
+          <div class="tab-row">
+            <button id="tab-login" type="button" class="tab-btn active-tab">Log In</button>
+            <button id="tab-signup" type="button" class="tab-btn">Sign Up</button>
+          </div>
+
+          <h3 id="auth-form-title" style="margin: 0 0 12px;">Sign In to 7xAir</h3>
+          <form id="auth-form" class="form-stack">
+            <input
+              id="auth-username"
+              class="glass-input hidden"
+              type="text"
+              placeholder="Username (3–20 chars)"
+              minlength="3"
+              maxlength="20"
+            />
+            <input id="auth-email" class="glass-input" type="email" placeholder="Email address" required />
+            <input
+              id="auth-password"
+              class="glass-input"
+              type="password"
+              placeholder="Password (min 8 chars)"
+              minlength="8"
+              required
+            />
+            <button id="auth-submit-btn" type="submit" class="btn-primary">Log In</button>
+          </form>
+          <div id="auth-feedback" class="feedback"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      <span>7xAir · Windows 10/11 Minecraft Launcher & Translucent Glass Fabric Client</span>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

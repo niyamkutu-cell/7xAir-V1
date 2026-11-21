@@ -1,0 +1,11 @@
+{
+  "name": "@7xair/website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "7xAir Vercel-hosted website with signup/login, showcase gallery, screenshot uploads, changelog, version info, and Windows EXE downloads",
+  "scripts": {
+    "dev": "node ../../scripts/website-server.mjs",
+    "start": "node ../../scripts/website-server.mjs"
+  }
+}

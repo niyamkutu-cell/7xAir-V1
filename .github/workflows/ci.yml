@@ -1,0 +1,38 @@
+name: 7xAir CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Package source ZIP and run checks and tests
+        run: |
+          npm run package:zip
+          npm run check
+          npm test
+
+  launcher-check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install launcher dependencies and typecheck
+        working-directory: apps/launcher
+        run: |
+          npm install
+          npm run build
+      - name: Rust cargo check
+        working-directory: apps/launcher/src-tauri
+        run: cargo check
