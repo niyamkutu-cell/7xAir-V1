@@ -1,0 +1,71 @@
+plugins {
+    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'maven-publish'
+}
+
+def targetId = project.hasProperty('mc_target') ? project.property('mc_target').toString() : '1.21.11'
+def targetPropsFile = file("versions/${targetId}.properties")
+if (!targetPropsFile.exists()) {
+    throw new GradleException("Unsupported mc_target '${targetId}'. Expected versions/1.21.11.properties or versions/26.2.properties.")
+}
+
+def targetProps = new Properties()
+targetPropsFile.withInputStream { targetProps.load(it) }
+
+def mcVersion = targetProps.getProperty('minecraft_version')
+def mcVersionRange = targetProps.getProperty('minecraft_version_range')
+def yarnMappings = targetProps.getProperty('yarn_mappings')
+def loaderVersion = targetProps.getProperty('loader_version')
+def fabricApiVersion = targetProps.getProperty('fabric_api_version')
+def javaVer = Integer.parseInt(targetProps.getProperty('java_version', '21'))
+
+version = "${project.mod_version}+mc${mcVersion}"
+group = project.maven_group
+
+base {
+    archivesName = "${project.archives_base_name}-${mcVersion}"
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${mcVersion}"
+    mappings "net.fabricmc:yarn:${yarnMappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loaderVersion}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version_range", mcVersionRange
+    inputs.property "loader_version", loaderVersion
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand(
+            "version": project.version,
+            "minecraft_version_range": mcVersionRange,
+            "loader_version": loaderVersion
+        )
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = javaVer
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.toVersion(javaVer)
+    targetCompatibility = JavaVersion.toVersion(javaVer)
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
