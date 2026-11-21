@@ -152,7 +152,7 @@ export function InstanceModsView({
     setError(null);
     setNotice(null);
     try {
-      await updateInstanceContent(instance.id, upd.projectId, upd.latestVersionId, "mod");
+      await updateInstanceContent(instance.id, upd.projectId);
       setUpdates((prev) => prev.filter((u) => u.projectId !== upd.projectId));
       await loadMods();
       setNotice(`Updated ${upd.title} to ${upd.latestVersionNumber}.`);
