@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en" data-theme="midnight-anime">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7xAir — Play Lighter. Play Faster.</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- Animated Scenic Atmosphere Backdrop (Matches 7xAir Launcher Scenarios) -->
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="scenic-sky"></div>
+      <div id="web-wallpaper-layer" class="web-wallpaper-layer hidden"></div>
+      <div id="web-wallpaper-scrim" class="web-wallpaper-scrim hidden"></div>
+      <div class="ambient-orb ambient-orb--1"></div>
+      <div class="ambient-orb ambient-orb--2"></div>
+      <svg class="scenic-mountains" viewBox="0 0 1440 420" preserveAspectRatio="none">
+        <path
+          class="mtn-layer mtn-far"
+          d="M0,260 L150,175 L310,235 L490,130 L680,220 L860,118 L1060,210 L1250,140 L1440,215 L1440,420 L0,420 Z"
+        />
+        <path
+          class="mtn-layer mtn-mid"
+          d="M0,310 L190,225 L380,285 L590,195 L790,275 L1010,185 L1220,265 L1440,210 L1440,420 L0,420 Z"
+        />
+        <path
+          class="mtn-layer mtn-near"
+          d="M0,355 L240,295 L470,340 L720,275 L960,335 L1210,285 L1440,330 L1440,420 L0,420 Z"
+        />
+      </svg>
+      <div id="scenic-particles" class="scenic-particles"></div>
+    </div>
+
+    <header class="navbar glass-surface">
+      <div class="nav-inner">
+        <a href="#home" class="brand" data-page="home">
+          <img src="/logo-7x.png" alt="7X" class="brand-logo" />
+          <span>7xAir</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="#home" class="nav-link active" data-page="home">Home</a>
+          <a href="#features" class="nav-link" data-page="features">Features</a>
+          <a href="#performance" class="nav-link" data-page="performance">Performance Center</a>
+          <a href="#client" class="nav-link" data-page="client">Client</a>
+          <a href="#updates" class="nav-link" data-page="updates">Updates</a>
+          <a href="#downloads" class="nav-link" data-page="downloads">Downloads</a>
+          <a href="#account" class="nav-link" data-page="account">Account</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button id="nav-sound-btn" type="button" class="btn-glass btn-sm" aria-label="Open UI Sound Settings">Sound: ON</button>
+          <button id="nav-auth-btn" type="button" class="btn-glass btn-sm">Sign In</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Interactive Atmosphere / Scenario Switcher -->
+    <div class="scene-bar-wrap">
+      <div class="scene-bar glass-surface" role="group" aria-label="Background Scenario">
+        <span class="scene-label">Themes</span>
+        <button type="button" class="scene-chip" data-scene="midnight-sky">Theme 1</button>
+        <button type="button" class="scene-chip" data-scene="azure-mountains">Theme 2</button>
+        <button type="button" class="scene-chip" data-scene="sakura-valley">Theme 3</button>
+        <button type="button" class="scene-chip" data-scene="emerald-wilderness">Theme 4</button>
+        <button type="button" class="scene-chip" data-scene="sunset-horizon">Theme 5</button>
+        <button type="button" class="scene-chip" data-scene="crimson-obsidian">Theme 6</button>
+        <button type="button" class="scene-chip active" data-scene="midnight-anime">Theme 7</button>
+        <button type="button" class="scene-chip" data-scene="serenity-nature">Theme 8</button>
+        <button type="button" class="scene-chip" data-scene="anime-glass">Theme 9</button>
+        <button id="open-web-wallpaper-btn" type="button" class="scene-chip">Wallpaper Engine</button>
+        <button id="open-web-fx-btn" type="button" class="scene-chip">Atmosphere FX</button>
+        <button id="open-web-cust-btn" type="button" class="scene-chip">Customize</button>
+      </div>
+    </div>
+
+    <main class="container">
+      <!-- 1. HOME PAGE -->
+      <section id="page-home" class="page-view active">
+        <div class="hero glass-surface">
+          <span class="pill">Windows 10 & 11 · Minecraft 1.21.11 & 26.2</span>
+          <h1>Play Lighter. Play Faster.</h1>
+          <p class="lead">
+            A calm, razor-fast Minecraft launcher and translucent in-game HUD crafted for smooth
+            frames, effortless mods, and total focus.
+          </p>
+          <div class="hero-cta">
+            <a href="#downloads" class="btn-primary" data-page="downloads">
+              Download for Windows
+            </a>
+            <a href="#features" class="btn-glass" data-page="features">Explore Features</a>
+          </div>
+          <div class="quote-banner">
+            <blockquote id="hero-quote">“Built to disappear behind your gameplay.”</blockquote>
+            <button id="next-quote-btn" type="button" class="quote-next" title="Next tagline">
+              Next Quote ↻
+            </button>
+          </div>
+        </div>
+
+        <div class="three-col" style="margin-top: 20px;">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Clean Profiles</span>
+            <h3>Separate Worlds, Zero Mess</h3>
+            <p class="muted">
+              Keep every Minecraft version, modpack, and custom setup neatly isolated with instant
+              one-click switching.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Pure Speed</span>
+            <h3>Smooth Frames, Every Fight</h3>
+            <p class="muted">
+              Smart memory presets, live system stats, and automatic background pausing keep your
+              PC focused on the game.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Translucent HUD</span>
+            <h3>Minimal. Crisp. Yours.</h3>
+            <p class="muted">
+              Drag, resize, and color every in-game widget live with smooth glass visuals and
+              scenic themes that match your mood.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. FEATURES PAGE -->
+      <section id="page-features" class="page-view">
+        <div class="page-head">
+          <h2>Designed for Every Kind of Player</h2>
+          <p class="muted">“Simplicity is the ultimate performance upgrade.”</p>
+        </div>
+        <div class="features-grid">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Monitoring</span>
+            <h3>Performance Center</h3>
+            <p class="muted">Live system stats and one-click optimization presets tailored to your PC.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Profiles</span>
+            <h3>Isolated Instances</h3>
+            <p class="muted">Run multiple setups side by side without mods or settings ever colliding.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Modpacks</span>
+            <h3>Built-In Mod & Modpack Browser</h3>
+            <p class="muted">Search, install, and update compatible mods and full modpacks in one click.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Protection</span>
+            <h3>Safe Mod Management</h3>
+            <p class="muted">Toggle mods on or off safely, protect custom configs, and roll back updates anytime.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Diagnostics</span>
+            <h3>Instant Crash Insights</h3>
+            <p class="muted">Plain-English explanations whenever a mod conflict or launch issue happens.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Performance</span>
+            <h3>Built-In Performance Optimizer</h3>
+            <p class="muted">Real memory &amp; process audits, safe temporary-file Cleanup Center, 5 profiles, and 1-click JVM backup &amp; revert.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Launcher Music</span>
+            <h3>Built-In Music Player in Launcher</h3>
+            <p class="muted">Stream official music catalogs, build custom playlists, enjoy a live equalizer, and keep music playing smoothly in the background inside the 7xAir Launcher.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Visuals</span>
+            <h3>Anime Themes &amp; Wallpaper Engine</h3>
+            <p class="muted">12 built-in themes, 9 anime wallpapers, custom launcher wallpaper engine, filters, and automatic day/night switching.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Atmosphere</span>
+            <h3>Live Atmosphere &amp; Flying FX</h3>
+            <p class="muted">Raindrops, cherry blossoms, rockets with flames &amp; smoke, aircraft, birds, butterflies, and glossy reaction icons.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Studio</span>
+            <h3>Advanced Customization Center</h3>
+            <p class="muted">27+ fonts, custom font uploads, full color &amp; gradient controls, custom themes, and live preview.</p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Audio</span>
+            <h3>Metallic Interactive Sound System</h3>
+            <p class="muted">Crisp metallic hover, click, toggle, navigation, and notification sounds with volume and mute controls.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. PERFORMANCE CENTER PAGE -->
+      <section id="page-performance" class="page-view">
+        <div class="page-head">
+          <h2>7xAir Performance Center</h2>
+          <p class="muted">“Every millisecond counts when the fight starts.”</p>
+        </div>
+        <div class="two-col">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">4 Smart Presets</span>
+            <h3>Balanced · Max FPS · Low Resource · PvP</h3>
+            <p class="muted">
+              Pick a preset that fits your hardware. 7xAir automatically balances memory and
+              startup behavior without risky tweaks.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Zero Distractions</span>
+            <h3>Auto-Pause While Playing</h3>
+            <p class="muted">
+              The moment Minecraft launches, launcher animations and effects go silent so 100% of
+              your system stays dedicated to your game.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. CLIENT PAGE (INTERACTIVE HUD PREVIEW) -->
+      <section id="page-client" class="page-view">
+        <div class="page-head">
+          <h2>7xAir In-Game Experience</h2>
+          <p class="muted">“Clean glass overlays that stay out of your crosshair.”</p>
+        </div>
+
+        <div class="glass-surface card-pad" style="margin-bottom: 18px;">
+          <div class="preview-header">
+            <div>
+              <span class="pill">Interactive Preview</span>
+              <h3 style="margin: 8px 0 4px;">Try the In-Game HUD</h3>
+              <p class="muted" style="margin: 0;">Toggle modules below to preview how 7xAir looks on screen.</p>
+            </div>
+            <div class="preview-toggles">
+              <button type="button" class="scene-chip active" data-hud-toggle="fps">FPS</button>
+              <button type="button" class="scene-chip active" data-hud-toggle="cps">CPS</button>
+              <button type="button" class="scene-chip active" data-hud-toggle="ping">Ping</button>
+              <button type="button" class="scene-chip active" data-hud-toggle="keys">Keystrokes</button>
+            </div>
+          </div>
+
+          <div class="hud-stage">
+            <div class="hud-chip" data-hud-widget="fps">248 FPS</div>
+            <div class="hud-chip" data-hud-widget="cps">12 | 9 CPS</div>
+            <div class="hud-chip" data-hud-widget="ping">18 ms</div>
+            <div class="hud-keys" data-hud-widget="keys">
+              <div class="hud-key-row"><span class="hud-key active">W</span></div>
+              <div class="hud-key-row">
+                <span class="hud-key">A</span>
+                <span class="hud-key">S</span>
+                <span class="hud-key">D</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">Right Shift</span>
+            <h3>Modern In-Game Menu</h3>
+            <p class="muted">
+              Instant search, clean categories, smooth animations, and custom keybinds for over 40
+              lightweight gameplay modules.
+            </p>
+          </article>
+          <article class="glass-surface card-pad hover-card">
+            <span class="pill">H Key</span>
+            <h3>Live Drag & Resize HUD Editor</h3>
+            <p class="muted">
+              Drag any widget anywhere, snap to alignment guides, tune opacity, and save layouts
+              automatically across resolutions.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. UPDATES PAGE -->
+      <section id="page-updates" class="page-view">
+        <div class="page-head">
+          <h2>Updates & Releases</h2>
+          <p class="muted">See what's new in 7xAir.</p>
+        </div>
+        <div id="versions-grid" class="two-col" style="margin-bottom: 18px;"></div>
+        <div id="changelog-list" class="changelog-list"></div>
+      </section>
+
+      <!-- 7. DOWNLOADS PAGE (CLEAN & SIMPLE) -->
+      <section id="page-downloads" class="page-view">
+        <div class="page-head">
+          <h2>Download 7xAir</h2>
+          <p class="muted">“One click away from a cleaner Minecraft experience.”</p>
+        </div>
+
+        <div class="glass-surface card-pad download-grid">
+          <div>
+            <span class="pill" id="dl-version-pill">v0.1.0 · Stable</span>
+            <h3 id="dl-filename" style="margin: 12px 0 6px;">7xAir-Setup-0.1.0.exe</h3>
+            <p class="muted" style="margin: 0;">
+              Windows 10 & 11 (64-bit) · Fast setup · Automatic updates built in.
+            </p>
+          </div>
+
+          <div class="download-actions">
+            <div id="dl-auth-status" class="muted" style="font-size: 13px;">
+              Ready to download.
+            </div>
+            <button id="windows-exe-btn" type="button" class="btn-primary">
+              Sign In to Download Windows EXE
+            </button>
+            <div id="dl-feedback" class="feedback"></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 8. ACCOUNT PAGE -->
+      <section id="page-account" class="page-view">
+        <div class="page-head">
+          <h2>7xAir Account</h2>
+          <p class="muted">
+            Sign in to download 7xAir for Windows and manage your account.
+          </p>
+        </div>
+
+        <div id="account-signed-in" class="glass-surface card-pad hidden">
+          <span class="pill">Signed In</span>
+          <h3 id="account-username" style="margin: 12px 0 6px;"></h3>
+          <p id="account-email" class="muted"></p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
+            <a href="#downloads" class="btn-primary" data-page="downloads">Go to Downloads</a>
+            <button id="account-signout-btn" type="button" class="btn-glass">Sign Out</button>
+          </div>
+        </div>
+
+        <div id="account-auth-box" class="glass-surface card-pad" style="max-width: 460px;">
+          <div class="tab-row">
+            <button id="tab-login" type="button" class="tab-btn active-tab">Log In</button>
+            <button id="tab-signup" type="button" class="tab-btn">Sign Up</button>
+          </div>
+
+          <h3 id="auth-form-title" style="margin: 0 0 12px;">Sign In to 7xAir</h3>
+          <form id="auth-form" class="form-stack">
+            <input
+              id="auth-username"
+              class="glass-input hidden"
+              type="text"
+              placeholder="Username (3–20 chars)"
+              minlength="3"
+              maxlength="20"
+            />
+            <input id="auth-email" class="glass-input" type="email" placeholder="Email address" required />
+            <input
+              id="auth-password"
+              class="glass-input"
+              type="password"
+              placeholder="Password (min 8 chars)"
+              minlength="8"
+              required
+            />
+            <button id="auth-submit-btn" type="submit" class="btn-primary">Log In</button>
+          </form>
+          <div id="auth-feedback" class="feedback"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      <span>7xAir · Play Lighter. Play Faster.</span>
+    </footer>
+
+    <!-- SOUND SETTINGS MODAL -->
+    <div id="sound-settings-modal" class="web-modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Sound Settings">
+      <div class="web-modal-card glass-surface card-pad">
+        <div class="music-hero-top" style="margin-bottom: 12px;">
+          <div>
+            <span class="pill pill-red">Audio</span>
+            <h3 style="margin: 8px 0 2px;">Website Sound Settings</h3>
+          </div>
+          <button id="sound-modal-close" type="button" class="btn-glass btn-sm" aria-label="Close Sound Settings">Close</button>
+        </div>
+
+        <div class="sound-row">
+          <span>Enable UI Sounds</span>
+          <button id="sound-master-toggle" type="button" class="btn-glass btn-sm">ON</button>
+        </div>
+        <div class="sound-row">
+          <span>Master Volume (<strong id="sound-volume-label">45%</strong>)</span>
+          <input id="sound-volume-slider" type="range" min="0" max="100" value="45" aria-label="Master sound volume" />
+        </div>
+        <div class="sound-row">
+          <span>Navigation Sound</span>
+          <button id="sound-nav-toggle" type="button" class="btn-glass btn-sm">ON</button>
+        </div>
+        <div class="sound-row">
+          <span>Button &amp; Dropdown Sound</span>
+          <button id="sound-btn-toggle" type="button" class="btn-glass btn-sm">ON</button>
+        </div>
+        <div class="sound-row">
+          <span>Notification Sound (Success / Error)</span>
+          <button id="sound-notif-toggle" type="button" class="btn-glass btn-sm">ON</button>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap;">
+          <button id="sound-test-success" type="button" class="btn-glass btn-sm">Test Success</button>
+          <button id="sound-test-error" type="button" class="btn-glass btn-sm">Test Error</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBSITE WALLPAPER ENGINE & AUTO THEME MODAL -->
+    <div id="web-wallpaper-modal" class="web-modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Website Wallpaper Engine">
+      <div class="web-modal-card glass-surface card-pad" style="max-width: 680px; max-height: 86vh; overflow-y: auto;">
+        <div class="music-hero-top" style="margin-bottom: 12px;">
+          <div>
+            <span class="pill pill-red">7xAir Visuals</span>
+            <h3 style="margin: 8px 0 2px;">Website Wallpaper Engine</h3>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="web-wp-restore-btn" type="button" class="btn-glass btn-sm">Restore Default</button>
+            <button id="close-web-wallpaper-btn" type="button" class="btn-glass btn-sm">Close</button>
+          </div>
+        </div>
+
+        <div class="web-wp-controls">
+          <label>Fit
+            <select id="web-wp-fit" class="glass-input">
+              <option value="cover">Cover</option>
+              <option value="contain">Contain</option>
+              <option value="center">Center</option>
+            </select>
+          </label>
+          <label>Position
+            <select id="web-wp-pos" class="glass-input">
+              <option value="center">Center</option>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+          <label>Auto Theme Switch
+            <select id="web-auto-switch-mode" class="glass-input">
+              <option value="manual">Manual (OFF)</option>
+              <option value="schedule">Time-Based</option>
+              <option value="system">System Light / Dark</option>
+            </select>
+          </label>
+          <label>Brightness <input id="web-wp-brightness" type="range" min="40" max="150" value="100" /></label>
+          <label>Blur <input id="web-wp-blur" type="range" min="0" max="24" value="0" /></label>
+          <label>Saturation <input id="web-wp-sat" type="range" min="40" max="180" value="108" /></label>
+          <label>Contrast <input id="web-wp-contrast" type="range" min="60" max="150" value="104" /></label>
+          <label>Overlay Opacity <input id="web-wp-overlay" type="range" min="20" max="88" value="56" /></label>
+        </div>
+
+        <div id="web-wp-gallery" class="web-wp-gallery"></div>
+      </div>
+    </div>
+
+    <!-- MAIN UI OVERLAY ATMOSPHERE CANVAS -->
+    <canvas id="web-atmosphere-canvas" aria-hidden="true" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:35;"></canvas>
+
+    <!-- WEBSITE ATMOSPHERE FX CONTROLS MODAL -->
+    <div id="web-fx-modal" class="web-modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Atmosphere FX Settings">
+      <div class="web-modal-card glass-surface card-pad">
+        <div class="music-hero-top" style="margin-bottom: 12px;">
+          <div>
+            <span class="pill pill-red">Visual FX</span>
+            <h3 style="margin: 8px 0 2px;">Atmosphere &amp; Animation Controls</h3>
+          </div>
+          <button id="close-web-fx-btn" type="button" class="btn-glass btn-sm">Close</button>
+        </div>
+        <div class="web-wp-controls">
+          <label>FX Quality
+            <select id="web-fx-quality" class="glass-input">
+              <option value="low">Low</option>
+              <option value="balanced">Balanced</option>
+              <option value="high">High</option>
+              <option value="maximum">Maximum</option>
+            </select>
+          </label>
+          <label>Density <input id="web-fx-density" type="range" min="25" max="200" value="100" /></label>
+          <label>Speed <input id="web-fx-speed" type="range" min="40" max="200" value="100" /></label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+          <label><input id="web-fx-reduced" type="checkbox" /> Reduced Motion</label>
+          <label><input id="web-fx-rain" type="checkbox" checked /> Raindrops / Petals / Particles</label>
+          <label><input id="web-fx-flyers" type="checkbox" checked /> Rockets / Aircraft / Helicopters / Birds / Butterflies</label>
+          <label><input id="web-fx-viz" type="checkbox" checked /> Music Visualizer Bars</label>
+          <label><input id="web-fx-reactions" type="checkbox" checked /> Glossy Animated Reaction Icons</label>
+        </div>
+      </div>
+    </div>
+
+    <script src="/sound.js"></script>
+    <script src="/wallpaper.js"></script>
+    <!-- WEBSITE CUSTOMIZATION CENTER MODAL -->
+    <div id="web-customization-modal" class="web-modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Website Customization Center">
+      <div class="web-modal-card glass-surface card-pad" style="max-width: 600px; max-height: 85vh; overflow-y: auto;">
+        <div class="music-hero-top" style="margin-bottom: 12px;">
+          <div>
+            <span class="pill pill-red">7xAir Studio</span>
+            <h3 style="margin: 8px 0 2px;">Website Customization Center</h3>
+          </div>
+          <button id="close-web-cust-btn" type="button" class="btn-glass btn-sm">Close</button>
+        </div>
+
+        <div class="web-wp-controls">
+          <label>Heading Font (27 Fonts)
+            <select id="web-cust-heading-font" class="glass-input"></select>
+          </label>
+          <label>Body Font (27 Fonts)
+            <select id="web-cust-body-font" class="glass-input"></select>
+          </label>
+          <label>Font Size (px)
+            <input id="web-cust-size" type="range" min="12" max="20" value="15" />
+          </label>
+          <label>Font Weight
+            <select id="web-cust-weight" class="glass-input">
+              <option value="400">400</option>
+              <option value="500">500</option>
+              <option value="600">600</option>
+              <option value="700">700</option>
+            </select>
+          </label>
+          <label>Line Height
+            <input id="web-cust-lh" type="range" min="120" max="195" value="155" />
+          </label>
+          <label>Primary Color
+            <input id="web-cust-primary" type="color" value="#8b5cf6" />
+          </label>
+          <label>Accent Color
+            <input id="web-cust-accent" type="color" value="#38bdf8" />
+          </label>
+          <label>Custom Gradient
+            <input id="web-cust-gradient" type="text" class="glass-input" value="linear-gradient(135deg, #8b5cf6, #ef4444)" />
+          </label>
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;font-size:13px;">
+          <label><input id="web-cust-grad-head" type="checkbox" /> Gradient Headings</label>
+          <label><input id="web-cust-colors-on" type="checkbox" /> Enable Custom Colors</label>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="web-cust-reset-btn" type="button" class="btn-glass btn-sm">Restore Defaults</button>
+          <button id="web-cust-cancel-btn" type="button" class="btn-glass btn-sm">Cancel</button>
+          <button id="web-cust-save-btn" type="button" class="btn-music-red">Save &amp; Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/atmosphere.js"></script>
+    <script src="/customization.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

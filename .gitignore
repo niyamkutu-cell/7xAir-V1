@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+*.local
+
+# Rust / Tauri
+target/
+apps/launcher/src-tauri/target/
+apps/launcher/src-tauri/gen/
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Sandbox internal
+artifacts/
+user_uploaded_files/
