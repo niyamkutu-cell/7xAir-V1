@@ -210,7 +210,6 @@ test("Task 7: 8-page Black & Sky Blue website and server-verified /api/download 
     "page-client",
     "page-updates",
     "page-downloads",
-    "page-account",
   ]) {
     assert.ok(html.includes(`id="${id}"`), `Missing website page ${id}`);
   }
@@ -741,6 +740,7 @@ test("Built-In Managed Java Runtime & Rust Compile Guards: Auto-downloads Eclips
   assert.ok(launchRs.includes("ensure_managed_java_runtime(paths, req)"));
   assert.ok(perfRs.includes("use serde::{Deserialize, Serialize};"));
   assert.ok(perfRs.includes("sys.refresh_processes(sysinfo::ProcessesToUpdate::All);"));
-  assert.ok(!perfRs.includes("ProcessesToUpdate::All, true"));
+  assert.ok(!perfRs.includes("ProcessesToUpdate::All, true") && !perfRs.includes("list_installed_content(instance).unwrap_or_default()"));
+  assert.ok(!webHtml.includes('id="page-account"') && !webHtml.includes('id="nav-auth-btn"'));
   assert.ok(webHtml.includes("Launching Soon") && webHtml.includes('disabled aria-disabled="true"'));
 });

@@ -684,7 +684,7 @@ pub struct ModAuditReport {
 }
 
 pub fn audit_instance_optimization_mods(instance: &GameInstance) -> ModAuditReport {
-    let items = list_installed_content(instance).unwrap_or_default();
+    let items = list_installed_content(instance);
     let enabled_mods: Vec<String> = items
         .iter()
         .filter(|i| i.project_type == "mod" && i.enabled)

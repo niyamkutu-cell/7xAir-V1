@@ -53,12 +53,10 @@
           <a href="#client" class="nav-link" data-page="client">Client</a>
           <a href="#updates" class="nav-link" data-page="updates">Updates</a>
           <a href="#downloads" class="nav-link" data-page="downloads">Downloads</a>
-          <a href="#account" class="nav-link" data-page="account">Account</a>
         </nav>
 
         <div class="nav-actions">
           <button id="nav-sound-btn" type="button" class="btn-glass btn-sm" aria-label="Open UI Sound Settings">Sound: ON</button>
-          <button id="nav-auth-btn" type="button" class="btn-glass btn-sm">Sign In</button>
         </div>
       </div>
     </header>
@@ -320,55 +318,6 @@
       </section>
 
 
-      <!-- 8. ACCOUNT PAGE -->
-      <section id="page-account" class="page-view">
-        <div class="page-head">
-          <h2>7xAir Account</h2>
-          <p class="muted">
-            Sign in to download 7xAir for Windows and manage your account.
-          </p>
-        </div>
-
-        <div id="account-signed-in" class="glass-surface card-pad hidden">
-          <span class="pill">Signed In</span>
-          <h3 id="account-username" style="margin: 12px 0 6px;"></h3>
-          <p id="account-email" class="muted"></p>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
-            <a href="#downloads" class="btn-primary" data-page="downloads">Go to Downloads</a>
-            <button id="account-signout-btn" type="button" class="btn-glass">Sign Out</button>
-          </div>
-        </div>
-
-        <div id="account-auth-box" class="glass-surface card-pad" style="max-width: 460px;">
-          <div class="tab-row">
-            <button id="tab-login" type="button" class="tab-btn active-tab">Log In</button>
-            <button id="tab-signup" type="button" class="tab-btn">Sign Up</button>
-          </div>
-
-          <h3 id="auth-form-title" style="margin: 0 0 12px;">Sign In to 7xAir</h3>
-          <form id="auth-form" class="form-stack">
-            <input
-              id="auth-username"
-              class="glass-input hidden"
-              type="text"
-              placeholder="Username (3–20 chars)"
-              minlength="3"
-              maxlength="20"
-            />
-            <input id="auth-email" class="glass-input" type="email" placeholder="Email address" required />
-            <input
-              id="auth-password"
-              class="glass-input"
-              type="password"
-              placeholder="Password (min 8 chars)"
-              minlength="8"
-              required
-            />
-            <button id="auth-submit-btn" type="submit" class="btn-primary">Log In</button>
-          </form>
-          <div id="auth-feedback" class="feedback"></div>
-        </div>
-      </section>
     </main>
 
     <footer class="footer muted">
