@@ -78,7 +78,6 @@
         <button type="button" class="scene-chip" data-scene="anime-glass">Theme 9</button>
         <button id="open-web-wallpaper-btn" type="button" class="scene-chip">Wallpaper Engine</button>
         <button id="open-web-fx-btn" type="button" class="scene-chip">Atmosphere FX</button>
-        <button id="open-web-cust-btn" type="button" class="scene-chip">Customize</button>
       </div>
     </div>
 
@@ -94,7 +93,7 @@
           </p>
           <div class="hero-cta">
             <a href="#downloads" class="btn-primary" data-page="downloads">
-              Download for Windows
+              Launching Soon
             </a>
             <a href="#features" class="btn-glass" data-page="features">Explore Features</a>
           </div>
@@ -310,10 +309,10 @@
 
           <div class="download-actions">
             <div id="dl-auth-status" class="muted" style="font-size: 13px;">
-              Ready to download.
+              7xAir for Windows is launching soon.
             </div>
-            <button id="windows-exe-btn" type="button" class="btn-primary">
-              Sign In to Download Windows EXE
+            <button id="windows-exe-btn" type="button" class="btn-primary" disabled aria-disabled="true" style="opacity: 0.65; cursor: not-allowed;">
+              Launching Soon
             </button>
             <div id="dl-feedback" class="feedback"></div>
           </div>
@@ -500,64 +499,7 @@
 
     <script src="/sound.js"></script>
     <script src="/wallpaper.js"></script>
-    <!-- WEBSITE CUSTOMIZATION CENTER MODAL -->
-    <div id="web-customization-modal" class="web-modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Website Customization Center">
-      <div class="web-modal-card glass-surface card-pad" style="max-width: 600px; max-height: 85vh; overflow-y: auto;">
-        <div class="music-hero-top" style="margin-bottom: 12px;">
-          <div>
-            <span class="pill pill-red">7xAir Studio</span>
-            <h3 style="margin: 8px 0 2px;">Website Customization Center</h3>
-          </div>
-          <button id="close-web-cust-btn" type="button" class="btn-glass btn-sm">Close</button>
-        </div>
-
-        <div class="web-wp-controls">
-          <label>Heading Font (27 Fonts)
-            <select id="web-cust-heading-font" class="glass-input"></select>
-          </label>
-          <label>Body Font (27 Fonts)
-            <select id="web-cust-body-font" class="glass-input"></select>
-          </label>
-          <label>Font Size (px)
-            <input id="web-cust-size" type="range" min="12" max="20" value="15" />
-          </label>
-          <label>Font Weight
-            <select id="web-cust-weight" class="glass-input">
-              <option value="400">400</option>
-              <option value="500">500</option>
-              <option value="600">600</option>
-              <option value="700">700</option>
-            </select>
-          </label>
-          <label>Line Height
-            <input id="web-cust-lh" type="range" min="120" max="195" value="155" />
-          </label>
-          <label>Primary Color
-            <input id="web-cust-primary" type="color" value="#8b5cf6" />
-          </label>
-          <label>Accent Color
-            <input id="web-cust-accent" type="color" value="#38bdf8" />
-          </label>
-          <label>Custom Gradient
-            <input id="web-cust-gradient" type="text" class="glass-input" value="linear-gradient(135deg, #8b5cf6, #ef4444)" />
-          </label>
-        </div>
-
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;font-size:13px;">
-          <label><input id="web-cust-grad-head" type="checkbox" /> Gradient Headings</label>
-          <label><input id="web-cust-colors-on" type="checkbox" /> Enable Custom Colors</label>
-        </div>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
-          <button id="web-cust-reset-btn" type="button" class="btn-glass btn-sm">Restore Defaults</button>
-          <button id="web-cust-cancel-btn" type="button" class="btn-glass btn-sm">Cancel</button>
-          <button id="web-cust-save-btn" type="button" class="btn-music-red">Save &amp; Apply</button>
-        </div>
-      </div>
-    </div>
-
     <script src="/atmosphere.js"></script>
-    <script src="/customization.js"></script>
     <script src="/app.js"></script>
   </body>
 </html>

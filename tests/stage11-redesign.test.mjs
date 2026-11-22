@@ -163,7 +163,7 @@ test("Task 4: Microsoft OAuth ownership check, browser launch, Account UI skin/s
   assert.ok(authRs.includes("entitlements/mcstore"), "auth.rs must verify Minecraft ownership via /entitlements/mcstore");
   assert.ok(authRs.includes("open_verification_browser"), "auth.rs must open official Microsoft login page in browser");
   assert.ok(profilesTsx.includes("Switch Account") && profilesTsx.includes("Sign Out") && profilesTsx.includes("minotar.net/helm"), "ProfilesPage must show player skin, Sign Out, and Account Switching");
-  assert.ok(webAppJs.includes("Sign In to Download Windows EXE"), "Website must require sign-in before downloading Windows EXE");
+  assert.ok(webAppJs.includes("Launching Soon"), "Website download button must display Launching Soon");
 });
 
 test("Task 5: 8-module Performance Center with 4 profiles, Memory/Java/JVM config, and read-only Crash Analyzer", () => {
@@ -666,7 +666,7 @@ test("Advanced Customization Center: All 27 verified fonts, HEX/RGB/HSL + WCAG c
   assert.ok(centerTsx.includes("Create Custom Theme") && centerTsx.includes("Confirm Delete") && centerTsx.includes("Restore Defaults"));
   assert.ok(centerTsx.includes("Rocket Frequency") && centerTsx.includes("Helicopter Frequency") && centerTsx.includes("Falling Leaf Intensity"));
   assert.ok(configRs.includes("load_customization_json") && configRs.includes("save_customization_json"));
-  assert.ok(webHtml.includes('id="web-customization-modal"') && webHtml.includes('id="open-web-cust-btn"'));
+  assert.ok(!webHtml.includes('id="web-customization-modal"') && !webHtml.includes('id="open-web-cust-btn"'), "Website must not show Customization Center");
 
   const { createWebsiteServer } = await import("../scripts/website-server.mjs");
   const srv = createWebsiteServer();
@@ -729,4 +729,18 @@ test("Microsoft 1-Click Browser PKCE OAuth: Local loopback callback, prompt=sele
   assert.ok(libRs.includes("async fn sign_in_microsoft_browser"));
   assert.ok(bridgeTs.includes("sign_in_microsoft_browser"));
   assert.ok(modalTsx.includes("signInMicrosoftBrowser") && profTsx.includes("signInMicrosoftBrowser"));
+});
+
+test("Built-In Managed Java Runtime & Rust Compile Guards: Auto-downloads Eclipse Temurin JRE 21 on launch, sysinfo 0.31.4 & Deserialize fixed", () => {
+  const javaRs = read("apps/launcher/src-tauri/src/java.rs");
+  const launchRs = read("apps/launcher/src-tauri/src/launch.rs");
+  const perfRs = read("apps/launcher/src-tauri/src/performance.rs");
+  const webHtml = read("apps/website/public/index.html");
+
+  assert.ok(javaRs.includes("pub async fn ensure_managed_java_runtime") && javaRs.includes("api.adoptium.net/v3/binary/latest"));
+  assert.ok(launchRs.includes("ensure_managed_java_runtime(paths, req)"));
+  assert.ok(perfRs.includes("use serde::{Deserialize, Serialize};"));
+  assert.ok(perfRs.includes("sys.refresh_processes(sysinfo::ProcessesToUpdate::All);"));
+  assert.ok(!perfRs.includes("ProcessesToUpdate::All, true"));
+  assert.ok(webHtml.includes("Launching Soon") && webHtml.includes('disabled aria-disabled="true"'));
 });

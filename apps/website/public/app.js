@@ -64,16 +64,16 @@ function updateAuthUI() {
 
   if (currentUser) {
     if (navBtn) navBtn.textContent = `${currentUser.username} · Account`;
-    if (dlStatus) dlStatus.textContent = `Signed in as ${currentUser.username}. Ready to download.`;
-    if (dlBtn) dlBtn.textContent = "Download 7xAir for Windows";
+    if (dlStatus) dlStatus.textContent = "7xAir for Windows is launching soon.";
+    if (dlBtn) { dlBtn.textContent = "Launching Soon"; dlBtn.disabled = true; }
     if (signedInBox) signedInBox.classList.remove("hidden");
     if (authBox) authBox.classList.add("hidden");
     if (accName) accName.textContent = currentUser.username;
     if (accEmail) accEmail.textContent = currentUser.email || "";
   } else {
     if (navBtn) navBtn.textContent = "Sign In";
-    if (dlStatus) dlStatus.textContent = "Sign in to start your download.";
-    if (dlBtn) dlBtn.textContent = "Sign In to Download Windows EXE";
+    if (dlStatus) dlStatus.textContent = "7xAir for Windows is launching soon.";
+    if (dlBtn) { dlBtn.textContent = "Launching Soon"; dlBtn.disabled = true; }
     if (signedInBox) signedInBox.classList.add("hidden");
     if (authBox) authBox.classList.remove("hidden");
   }
@@ -214,31 +214,11 @@ document.getElementById("auth-form").addEventListener("submit", async (e) => {
   }
 });
 
-// Server-Protected Windows EXE Download handler
-document.getElementById("windows-exe-btn").addEventListener("click", async () => {
+// Windows EXE Download button (disabled - Launching Soon)
+document.getElementById("windows-exe-btn")?.addEventListener("click", (e) => {
+  e.preventDefault();
   const feedback = document.getElementById("dl-feedback");
-  if (!currentUser) {
-    feedback.textContent = "Please sign in first to download the Windows installer.";
-    navigateTo("account");
-    return;
-  }
-  feedback.textContent = "Preparing your download...";
-  try {
-    const authRes = await apiFetch("/api/download");
-    feedback.textContent = "Starting download...";
-    const link = document.createElement("a");
-    link.href = authRes.downloadUrl;
-    link.setAttribute("download", authRes.filename);
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    feedback.textContent = "Download started!";
-  } catch (err) {
-    feedback.textContent = err.message;
-    if (String(err.message).toLowerCase().includes("sign in") || String(err.message).includes("401")) {
-      navigateTo("account");
-    }
-  }
+  if (feedback) feedback.textContent = "7xAir for Windows is launching soon!";
 });
 
 // Initial boot

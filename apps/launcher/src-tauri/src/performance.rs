@@ -4,7 +4,7 @@ use crate::instances::GameInstance;
 use crate::java::detect_java_installations;
 use crate::modrinth::{list_installed_content, run_compatibility_checks, CompatibilityReport};
 use crate::windows::LauncherPaths;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
@@ -980,10 +980,10 @@ pub fn audit_system_memory_and_processes(paths: &LauncherPaths) -> SystemMemoryA
     let mut sys = System::new_with_specifics(
         sysinfo::RefreshKind::new()
             .with_memory(sysinfo::MemoryRefreshKind::everything())
-            .with_processes(sysinfo::ProcessRefreshKind::new().with_memory().with_cpu()),
+            .with_processes(sysinfo::ProcessRefreshKind::everything()),
     );
     sys.refresh_memory();
-    sys.refresh_processes(sysinfo::ProcessesToUpdate::All, true);
+    sys.refresh_processes(sysinfo::ProcessesToUpdate::All);
 
     let total_ram_mb = sys.total_memory() / (1024 * 1024);
     let used_ram_mb = sys.used_memory() / (1024 * 1024);

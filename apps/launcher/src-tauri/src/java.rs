@@ -193,3 +193,119 @@ pub fn detect_java_installations(paths: &LauncherPaths) -> Vec<JavaInstallation>
     });
     results
 }
+
+fn adoptium_os_name() -> &'static str {
+    if cfg!(target_os = "windows") {
+        "windows"
+    } else if cfg!(target_os = "macos") {
+        "mac"
+    } else {
+        "linux"
+    }
+}
+
+fn adoptium_arch_name() -> &'static str {
+    if cfg!(target_arch = "aarch64") {
+        "aarch64"
+    } else {
+        "x64"
+    }
+}
+
+/// Ensures 7xAir has a working Java runtime (downloading official Eclipse Temurin JRE into
+/// 7xAir's managed runtimes folder automatically if no compatible Java is installed on the PC).
+pub async fn ensure_managed_java_runtime(
+    paths: &LauncherPaths,
+    required_major: u32,
+) -> Result<JavaInstallation, String> {
+    let target_major = required_major.max(21);
+    let existing = detect_java_installations(paths);
+    if let Some(found) = existing
+        .iter()
+        .find(|j| j.source == "7xair-managed" && j.major_version >= target_major)
+        .or_else(|| existing.iter().find(|j| j.major_version >= target_major))
+    {
+        return Ok(found.clone());
+    }
+
+    let runtime_root = PathBuf::from(&paths.runtime_dir);
+    std::fs::create_dir_all(&runtime_root)
+        .map_err(|e| format!("Failed to create 7xAir runtime directory: {e}"))?;
+
+    let os = adoptium_os_name();
+    let arch = adoptium_arch_name();
+    let url = format!(
+        "https://api.adoptium.net/v3/binary/latest/{target_major}/ga/{os}/{arch}/jre/hotspot/normal/eclipse"
+    );
+
+    let http = reqwest::Client::builder()
+        .user_agent("7xAir-Launcher/0.1.0")
+        .build()
+        .map_err(|e| format!("Failed to initialize HTTP client for Java download: {e}"))?;
+
+    let resp = http
+        .get(&url)
+        .send()
+        .await
+        .map_err(|e| format!("Failed to download built-in Java {target_major} runtime: {e}"))?;
+
+    if !resp.status().is_success() {
+        return Err(format!(
+            "Adoptium Java {target_major} download returned HTTP {}.",
+            resp.status().as_u16()
+        ));
+    }
+
+    let archive_bytes = resp
+        .bytes()
+        .await
+        .map_err(|e| format!("Failed reading Java {target_major} download stream: {e}"))?;
+
+    let zip_path = runtime_root.join(format!("temurin-jre-{target_major}.zip.part"));
+    std::fs::write(&zip_path, &archive_bytes)
+        .map_err(|e| format!("Failed to save Java runtime archive: {e}"))?;
+
+    let extract_res: Result<(), String> = (|| {
+        let file = std::fs::File::open(&zip_path)
+            .map_err(|e| format!("Failed to open downloaded Java archive: {e}"))?;
+        let mut archive = zip::ZipArchive::new(file)
+            .map_err(|e| format!("Downloaded Java archive is not a valid ZIP: {e}"))?;
+
+        for i in 0..archive.len() {
+            let mut entry = archive
+                .by_index(i)
+                .map_err(|e| format!("Failed reading Java ZIP entry: {e}"))?;
+            let Some(rel_path) = entry.enclosed_name().map(|p| p.to_path_buf()) else {
+                continue;
+            };
+            let dest = runtime_root.join(&rel_path);
+            if entry.is_dir() {
+                std::fs::create_dir_all(&dest)
+                    .map_err(|e| format!("Failed creating Java directory: {e}"))?;
+            } else {
+                if let Some(parent) = dest.parent() {
+                    std::fs::create_dir_all(parent)
+                        .map_err(|e| format!("Failed creating Java parent directory: {e}"))?;
+                }
+                let mut out = std::fs::File::create(&dest)
+                    .map_err(|e| format!("Failed extracting Java file: {e}"))?;
+                std::io::copy(&mut entry, &mut out)
+                    .map_err(|e| format!("Failed writing extracted Java file: {e}"))?;
+            }
+        }
+        Ok(())
+    })();
+
+    let _ = std::fs::remove_file(&zip_path);
+    extract_res?;
+
+    let refreshed = detect_java_installations(paths);
+    refreshed
+        .into_iter()
+        .find(|j| j.source == "7xair-managed" && j.major_version >= required_major)
+        .ok_or_else(|| {
+            format!(
+                "Built-in Java {target_major} runtime was extracted, but the Java executable could not be verified."
+            )
+        })
+}

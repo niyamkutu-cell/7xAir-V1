@@ -6,7 +6,7 @@ use crate::fabric::{
     load_installed_fabric_profile, maven_coord_to_rel_path,
 };
 use crate::instances::GameInstance;
-use crate::java::{detect_java_installations, probe_java_path};
+use crate::java::{detect_java_installations, ensure_managed_java_runtime, probe_java_path};
 use crate::minecraft::{
     current_mojang_os_name, ensure_assets_downloaded, ensure_file_downloaded,
     fetch_or_load_version_details, library_allowed_for_current_os, required_java_major,
@@ -254,7 +254,30 @@ pub async fn launch_game_instance(
     let version_details = fetch_or_load_version_details(paths, &instance.mc_version).await?;
     let required_java = required_java_major(&version_details);
     let (java_bin, detected_java_major) =
-        resolve_java_executable(paths, settings, instance, required_java)?;
+        match resolve_java_executable(paths, settings, instance, required_java) {
+            Ok(found) => found,
+            Err(LaunchError::NoJavaRuntime(req)) => {
+                let target_major = req.max(21);
+                {
+                    let mut rt = runtime_arc.lock().expect("launch runtime lock");
+                    rt.push_log(format!(
+                        "[7xAir] No Java {req}+ found on this PC. Downloading 7xAir built-in Java {target_major} runtime (Eclipse Temurin)..."
+                    ));
+                }
+                let installed = ensure_managed_java_runtime(paths, req)
+                    .await
+                    .map_err(LaunchError::Validation)?;
+                {
+                    let mut rt = runtime_arc.lock().expect("launch runtime lock");
+                    rt.push_log(format!(
+                        "[7xAir] Built-in Java {} runtime ready: {}",
+                        installed.major_version, installed.path
+                    ));
+                }
+                (installed.path, installed.major_version)
+            }
+            Err(other) => return Err(other),
+        };
 
     // 3. Independently sync Fabric API (only if loader == "fabric" && auto_install_fabric_api == true)
     if instance.loader == "fabric" && instance.auto_install_fabric_api {
