@@ -1097,9 +1097,18 @@ pub async fn connect_spotify_pkce(paths: &LauncherPaths) -> Result<MusicStateSna
     // Open official Spotify login page in the user's default browser
     #[cfg(target_os = "windows")]
     {
-        let _ = std::process::Command::new("cmd")
-            .args(["/C", "start", "", &auth_url])
+        use std::os::windows::process::CommandExt;
+        let spawned = std::process::Command::new("rundll32.exe")
+            .args(["url.dll,FileProtocolHandler", &auth_url])
+            .creation_flags(0x08000000)
             .spawn();
+        if spawned.is_err() {
+            let escaped = auth_url.replace('&', "^&");
+            let _ = std::process::Command::new("cmd.exe")
+                .args(["/C", "start", "", &escaped])
+                .creation_flags(0x08000000)
+                .spawn();
+        }
     }
     #[cfg(not(target_os = "windows"))]
     {

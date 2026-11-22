@@ -54,6 +54,7 @@ jobs:
         working-directory: apps/launcher
         env:
           SEVENXAIR_MSA_CLIENT_ID: ${{ secrets.SEVENXAIR_MSA_CLIENT_ID }}
+          SEVENXAIR_SPOTIFY_CLIENT_ID: ${{ secrets.SEVENXAIR_SPOTIFY_CLIENT_ID }}
         run: |
           npm install
           npm run tauri:build
